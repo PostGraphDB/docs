@@ -1,4 +1,4 @@
-# Mathematical Functions
+# Number Functions and Operators
 
 
 

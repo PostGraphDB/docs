@@ -1,0 +1,2 @@
+# VariableEdge Type
+

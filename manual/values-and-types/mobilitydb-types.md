@@ -1,0 +1,2 @@
+# MobilityDB Types
+
