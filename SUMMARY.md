@@ -16,13 +16,9 @@
 ***
 
 * [📖 Manual](manual/README.md)
-  * [Aggregation](manual/aggregation/README.md)
-    * [Auto Group By](manual/aggregation/auto-group-by.md)
-    * [Continuous Aggregates](manual/aggregation/continuous-aggregates.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
     * [Labels](manual/queries/labels.md)
-    * [GROUP BY](manual/queries/group-by.md)
   * [Clauses](manual/clauses/README.md)
     * [OPTIONAL MATCH](manual/clauses/optional-match.md)
     * [CREATE](manual/clauses/create.md)
@@ -42,6 +38,7 @@
     * [MANDATORY MATCH](manual/clauses/mandatory-match.md)
     * [ORDER BY](manual/clauses/order-by.md)
     * [SKIP, LIMIT, OFFSET](manual/clauses/skip-limit-offset.md)
+    * [GROUP BY](manual/clauses/group-by.md)
   * [Subqueries](manual/subqueries/README.md)
     * [WITH Subqueries](manual/subqueries/with-subqueries.md)
     * [Existence Check Subqueries](manual/subqueries/existence-check-subqueries.md)
@@ -73,9 +70,11 @@
     * [Network Types](manual/values-and-types/network-types.md)
     * [Temporal Types](manual/values-and-types/temporal-types.md)
     * [Range/MultiRange Types](manual/values-and-types/range-multirange-types.md)
+  * [Aggregation](manual/aggregation/README.md)
+    * [Auto Group By](manual/aggregation/auto-group-by.md)
+    * [Continuous Aggregates](manual/aggregation/continuous-aggregates.md)
   * [Functions and Operators](manual/functions-and-operators/README.md)
     * [Range/Multirange Functions](manual/functions-and-operators/range-multirange-functions.md)
-    * [Number Functions and Operators](manual/functions-and-operators/number-functions-and-operators.md)
     * [PostGIS Functions and Operators](manual/functions-and-operators/postgis-functions-and-operators.md)
     * [Geometric Functions and Operators](manual/functions-and-operators/geometric-functions-and-operators.md)
     * [Network Functions and Operators](manual/functions-and-operators/network-functions-and-operators.md)
@@ -93,6 +92,7 @@
     * [Byte Array Functions and Operators](manual/functions-and-operators/byte-array-functions-and-operators.md)
     * [Windows Functions](manual/functions-and-operators/windows-functions.md)
     * [Aggregate Functions](manual/functions-and-operators/aggregate-functions.md)
+    * [Number Functions and Operators](manual/functions-and-operators/number-functions-and-operators.md)
   * [Cryptography](manual/cryptography.md)
   * [Data Importing/Exporting](manual/data-importing-exporting.md)
   * [Indexing](manual/indexing/README.md)
@@ -103,11 +103,10 @@
     * [Vector Indices](manual/indexing/vector-indices.md)
   * [Constraints](manual/constraints.md)
   * [Label Triggers](manual/label-triggers.md)
-
-## Product Guides
-
-* [📪 Making a post](product-guides/making-a-post.md)
-* [📎 Understanding Projects](product-guides/understanding-projects.md)
+  * [Advanced Path Finding](manual/advanced-path-finding/README.md)
+    * [Vector Path Finding](manual/advanced-path-finding/vector-path-finding.md)
+    * [Shortest Path](manual/advanced-path-finding/shortest-path.md)
+    * [PGRouting Integration](manual/advanced-path-finding/pgrouting-integration.md)
 
 ## Use Cases
 
