@@ -1,26 +1,32 @@
 # ✨ Our Features
 
-{% hint style="info" %}
-**GitBook tip:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at Loom as a perfect example of a succinct feature overview.
-{% endhint %}
-
 ## Cypher
 
-Get amazing things done with awesome feature one. But remember that awesome feature two and three exist too. In fact, Awesome Product is full of awesome features.
+Built on top of the openCypher query language. PostGraph takes the query language to brand new levels.
 
-![](https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?crop=entropy\&cs=tinysrgb\&fm=jpg\&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwyfHxhcHB8ZW58MHx8fHwxNjYwNTgzMzQz\&ixlib=rb-1.2.1\&q=80)
+## Revolutionary Store Mechanics
+
+Partitioning? Inheritance? LTrees? Why not all three at once? PostGraph has an innovative new query system that gives users fine-grained control of their query search space unlike any other.
+
+## Advanced Aggregation
+
+Don't just auto group your aggregates, take advantage of the verbose aggregation system that your SQL database provides, without the restrictions of traditional graph databases.&#x20;
 
 ## Vectors
 
-Get amazing things done with awesome feature two. But remember that awesome feature one and three exist too. In fact, Awesome Product is full of awesome features.
+No need to separate your graph database from your Vector database. Store all your data in one place and supercharge your ML Application.
 
-![](https://images.unsplash.com/photo-1569144157591-c60f3f82f137?crop=entropy\&cs=tinysrgb\&fm=jpg\&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwxfHxmZWF0dXJlfGVufDB8fHx8MTY2MDU4MzM1OQ\&ixlib=rb-1.2.1\&q=80)
+## Time-Series Data
 
 
+
+## GPU Enabled
+
+Got an extra GPU lying around that you don't what to do with? Plug it into your server and supercharge your database to new levels.
 
 ## PostGIS
 
-Unlock the power of spatial data in your graph database
+Combine graphs with your geometric database to model your data in new and innovative ways.
 
 ## Full Text Search
 
