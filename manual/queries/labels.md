@@ -83,7 +83,7 @@ Whitespace is not allowed in labels
 
 {% code overflow="wrap" %}
 ```sql
-CREATE [ TEMP | TEMPORARY ] (VLABEL | ELABEL ) [ IF NOT EXISTS ] label_name 
+CREATE [ TEMP | TEMPORARY ] (VLABEL | ELABEL ) [ IF NOT EXISTS ] label_name IN GRAPH 
 [ HAVING 
 (NO SCHEMA | SCHEMA { property_name [datatype] [property_constraint [...]] [, ... ]} [ALLOW OTHER PROPERTIES]] 
 [PARTITION BY { LIST | LIST | HASH } (property_name | (expression)) [AS HYPERLABEL]]
