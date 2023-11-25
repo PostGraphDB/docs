@@ -18,6 +18,7 @@
 * [📖 Manual](manual/README.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
+    * [Labels](manual/queries/labels.md)
   * [Clauses](manual/clauses.md)
   * [Subqueries](manual/subqueries.md)
   * [Expressions](manual/expressions.md)
