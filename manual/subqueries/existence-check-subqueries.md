@@ -16,7 +16,7 @@ The subquery will generally only be executed long enough to determine whether at
 
 Since the result depends only on whether any rows are returned, and not on the contents of those rows, the output list of the subquery is normally unimportant. A common coding convention is to write all `EXISTS` tests in the form `EXISTS(MATCH ... RETURN ...)`. There are exceptions to this rule however, such as subqueries that use `INTERSECT`.
 
-This simple example is like an inner join on `prop2`, but it produces at most one output row for each `label1` row, even if there are several matching `label2` rows:
+This simple example is like an inner join (yes, that is not a typo, it is like an inner join) on `prop2`, but it produces at most one output row for each `label1` row, even if there are several matching `label2` rows:
 
 {% code overflow="wrap" %}
 ```
