@@ -37,11 +37,11 @@ CREATE
   (martin)-[:FATHER_OF]->(charlie)
 ```
 
-### Basic node finding
+### Basic vertex finding
 
-#### Get all nodes
+#### Get all vertices
 
-By specifying a pattern with a single node and no labels, all nodes in the graph will be returned.
+By specifying a pattern with a single node and no labels, all vertices in the graph will be returned.
 
 Query
 
@@ -84,7 +84,7 @@ Returns all the nodes with the `Movie` label in the database.
 
 #### Related nodes
 
-The symbol `--` means _related to,_ without regard to type or direction of the relationship.
+The symbol `--` means _related to,_ without regard to type or direction of the edge.
 
 Query
 
@@ -102,7 +102,7 @@ Returns all the movies directed by `Oliver Stone`.
 
 #### Match with labels
 
-To constrain a pattern with labels on nodes, add the labels to the nodes in the pattern.
+To constrain a pattern with labels on vertices, add the labels to the vertices in the pattern.
 
 Query
 
@@ -118,9 +118,9 @@ Returns any nodes with the `Movie` label connected to `Oliver Stone`.
 | `"Wall Street"` |
 | `Rows: 1`       |
 
-#### Match with a label expression for the node labels
+#### Match with a label expression for the edge labels
 
-A match with an `OR` expression for the node label returns the nodes that contains both the specified labels.
+A match with an `OR` expression for the edge label returns the vertices that has either of the specified labels.
 
 Query
 
@@ -140,9 +140,9 @@ RETURN n.name AS name, n.title AS title
 | `<null>`            | `"The American President"` |
 | `Rows: 7`           |                            |
 
-### Relationship basics
+### Edges basics
 
-#### Outgoing relationships
+#### Outgoing edges
 
 When the direction of a relationship is of interest, it is shown by using `-→` or `←-`. For example:
 
@@ -160,9 +160,9 @@ Returns any nodes connected by an outgoing relationship to the `Person` node wit
 | `"Wall Street"` |
 | `Rows: 1`       |
 
-#### Relationship variables
+#### edge variables
 
-It is possible to introduce a variable to a pattern, either for filtering on relationship properties or to return a relationship. For example:
+It is possible to introduce a variable to a pattern, either for filtering on edge properties or to return an edge. For example:
 
 Query
 
@@ -171,14 +171,14 @@ MATCH (:Person {name: 'Oliver Stone'})-[r]->(movie)
 RETURN type(r)
 ```
 
-Returns the type of each outgoing relationship from `Oliver Stone`.
+Returns the type of each outgoing edge from `Oliver Stone`.
 
 | type(r)      |
 | ------------ |
 | `"DIRECTED"` |
 | `Rows: 1`    |
 
-#### Match on an undirected relationship
+#### Match on an undirected edge
 
 When a pattern contains a bound relationship, and that relationship pattern does not specify direction, Cypher will try to match the relationship in both directions.
 
@@ -195,9 +195,9 @@ RETURN a, b
 | `(:Person {"name":"Charlie Sheen"})` | `(:Movie {"title":"Wall Street"})`   |
 | `Rows: 2`                            |                                      |
 
-#### Match on relationship type
+#### Match on edge type
 
-When the relationship type to match on is known, it is possible to specify it by using a colon (`:`) before the relationship type.
+When the edge type to match on is known, it is possible to specify it by using a colon (`:`) before the edge type.
 
 Query
 
@@ -215,11 +215,9 @@ Returns all actors who `ACTED_IN` the movie `Wall Street`.
 | `"Charlie Sheen"`   |
 | `Rows: 3`           |
 
-Read more about [relationship type expressions](https://neo4j.com/docs/cypher-manual/current/patterns/concepts/#relationship-patterns).
+#### Match on multiple edge types
 
-#### Match on multiple relationship types
-
-It is possible to match on multiple relationship types by using the pipe symbol (`|`). For example:
+It is possible to match on multiple edge types by using the pipe symbol (`|`). For example:
 
 Query
 
@@ -238,7 +236,7 @@ Returns nodes with an `ACTED_IN` or `DIRECTED` relationship to the movie `Wall S
 | `"Charlie Sheen"`   |
 | `Rows: 4`           |
 
-#### Match on relationship type and use a variable
+#### Match on edge type and use a variable
 
 Variables and specific relationship types can be included in the same pattern. For example:
 
@@ -287,12 +285,14 @@ MATCH (n {name: 'Rob Reiner'})-[r:`OLD FRIENDS`]->()
 RETURN type(r)
 ```
 
+
+
 | type(r)         |
 | --------------- |
 | `"OLD FRIENDS"` |
 | `Rows: 1`       |
 
-#### Multiple relationships
+#### Multiple edges
 
 Relationships can be expressed by using multiple statements in the form of `()--()`, or they can be strung together. For example:
 
@@ -309,3 +309,4 @@ Returns the movie in which `Charlie Sheen` acted and its director.
 | --------------- | ---------------- |
 | `"Wall Street"` | `"Oliver Stone"` |
 | `Rows: 1`       |                  |
+

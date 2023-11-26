@@ -6,9 +6,9 @@ description: Primary Categorization System
 
 Labels are the primary classification system for Vertices and Edge within PostGraph. Labels allow you to classify and reduce the search space that you can check per query. PostGraph takes the definition of labels provided in the openCypher specification and enhances them with the partition management system of TimescaleDB's hypertables and the inheritance query system that Postgres' LTree data type.&#x20;
 
-## Defintion
+## Definition
 
-A _label_ is a sequence of alphanumeric characters, underscores, and hyphens. Valid alphanumeric character ranges are dependent on the database locale. For example, in C locale, the characters `A-Za-z0-9_-` are allowed. Labels must be no more than 1000 characters long. Labels must begin with a `A-Za-z_`
+A _label_ is a sequence of alphanumeric characters, underscores, and hyphens. Labels must begin with a `A-Za-z_ and`the characters `A-Za-z0-9_-` are allowed subsequently allowed after. Labels must be no more than 1000 characters long.&#x20;
 
 Examples: `Personal_Services`
 
@@ -51,7 +51,7 @@ The behavior of `%` is a bit complicated. It tries to match words rather than th
 
 Also, you can write several possibly-modified non-star items separated with `|` (OR) to match any of those items, and you can put `!` (NOT) at the start of a non-star group to match any label that doesn't match any of the alternatives. A quantifier, if any, goes at the end of the group; it means some number of matches for the group as a whole (that is, some number of labels matching or not matching any of the alternatives).
 
-Here's an annotated example of `lquery`:
+Here's an annotated example of a `label_query`:
 
 <pre><code><strong>MATCH (a:'Top.*{0,2}.sport*@.!football|tennis{1,}.Russ*|Spain') RETURN a
 </strong>          a.  b.     c.      d.                   e.
@@ -73,13 +73,11 @@ Here's an example `ltxtquery`:
 MATCH (a:'Europe & Russia*@ & !Transportation') RETURN a
 ```
 
-This will match paths that contain the label `Europe` and any label beginning with `Russia` (case-insensitive), but not paths containing the label `Transportation`. The location of these words within the path is not important. Also, when `%` is used, the word can be matched to any underscore-separated word within a label, regardless of position.
+This will match vertices whose label path contains the label `Europe` and any label beginning with `Russia` (case-insensitive), but not paths containing the label `Transportation`. The location of these words within the path is not important. Also, when `%` is used, the word can be matched to any underscore-separated word within a label, regardless of position.
 
 {% hint style="info" %}
 Whitespace is not allowed in labels
 {% endhint %}
-
-
 
 {% code overflow="wrap" %}
 ```sql
