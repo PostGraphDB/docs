@@ -17,6 +17,7 @@
 
 * [📖 Manual](manual/README.md)
   * [DDL Commands](manual/ddl-commands/README.md)
+    * [DROP GRAPH](manual/ddl-commands/drop-graph.md)
     * [CREATE GRAPH](manual/ddl-commands/create-graph.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
