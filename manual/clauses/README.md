@@ -10,7 +10,7 @@ The flow of data within a Cypher query is an unordered sequence of maps with key
 
 | Clause                                  | Description                                                                                              |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [`MATCH`](match/)                       | Specify the patterns to search for in the database.                                                      |
+| [`MATCH`](match.md)                     | Specify the patterns to search for in the database.                                                      |
 | [`OPTIONAL MATCH`](optional-match.md)   | Specify the patterns to search for in the database while using `nulls` for missing parts of the pattern. |
 | [`MANDATORY MATCH`](mandatory-match.md) |                                                                                                          |
 
