@@ -16,6 +16,8 @@
 ***
 
 * [📖 Manual](manual/README.md)
+  * [DDL Commands](manual/ddl-commands/README.md)
+    * [CREATE GRAPH](manual/ddl-commands/create-graph.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
     * [Labels](manual/queries/labels.md)
