@@ -18,6 +18,7 @@
 * [📖 Manual](manual/README.md)
   * [DDL Commands](manual/ddl-commands/README.md)
     * [DROP LABEL](manual/ddl-commands/drop-label.md)
+    * [DROP LABEL TRIGGER](manual/ddl-commands/drop-label-trigger.md)
     * [DROP GRAPH](manual/ddl-commands/drop-graph.md)
     * [CREATE GRAPH](manual/ddl-commands/create-graph.md)
     * [CREATE LABEL](manual/ddl-commands/create-label.md)
