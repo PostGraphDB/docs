@@ -18,9 +18,9 @@ CREATE [ OR REPLACE ] LABEL [ CONSTRAINT ] TRIGGER name { BEFORE | AFTER | INSTE
     EXECUTE { FUNCTION | PROCEDURE } function_name ( arguments )
 
 where event can be one of:
-
-    INSERT
-    UPDATE [ OF property_name [, ... ] ]
+    CREATE
+    SET [ OF property_name [, ... ] ]
+    RMEOVE [ OF property_name [, ... ] ]
     DELETE
     TRUNCATE
 ```
@@ -32,7 +32,7 @@ where event can be one of:
 
 To replace the current definition of an existing trigger, use `CREATE OR REPLACE LABEL TRIGGER`, specifying the existing trigger's name and parent label. All other properties are replaced.
 
-The trigger can be specified to fire before the operation is attempted on a row (before constraints are checked and the `INSERT`, `UPDATE`, or `DELETE` is attempted); or after the operation has completed (after constraints are checked and the `INSERT`, `UPDATE`, or `DELETE` has completed); or instead of the operation (in the case of inserts, updates or deletes on a view). If the trigger fires before or instead of the event, the trigger can skip the operation for the current row, or change the row being inserted (for `INSERT` and `UPDATE` operations only). If the trigger fires after the event, all changes, including the effects of other triggers, are “visible” to the trigger.
+The trigger can be specified to fire before the operation is attempted on a row (before constraints are checked and the `CREATE`, `SET, REMOVE`, or `DELETE` is attempted); or after the operation has completed (after constraints are checked and the `CREATE`, `SET`, `REMOVE,`or `DELETE` has completed); or instead of the operation (in the case of inserts, updates or deletes on a view). If the trigger fires before or instead of the event, the trigger can skip the operation for the current row, or change the row being inserted (for `INSERT` and `UPDATE` operations only). If the trigger fires after the event, all changes, including the effects of other triggers, are “visible” to the trigger.
 
 A trigger that is marked `FOR EACH ROW` is called once for every row that the operation modifies. For example, a `DELETE` that affects 10 rows will cause any `ON DELETE` triggers on the target relation to be called 10 separate times, once for each deleted row. In contrast, a trigger that is marked `FOR EACH STATEMENT` only executes once for any given operation, regardless of how many rows it modifies (in particular, an operation that modifies zero rows will still result in the execution of any applicable `FOR EACH STATEMENT` triggers).
 
@@ -42,14 +42,14 @@ In addition, triggers may be defined to fire for `TRUNCATE`, though only `FOR EA
 
 The following table summarizes which types of triggers may be used on tables, views, and foreign tables:
 
-| When         | Event                      | Row-level                 | Statement-level                   |
-| ------------ | -------------------------- | ------------------------- | --------------------------------- |
-| `BEFORE`     | `INSERT`/`UPDATE`/`DELETE` | Tables and foreign labels | Labels, views, and foreign tables |
-| `TRUNCATE`   | —                          | Tables and foreign labels |                                   |
-| `AFTER`      | `INSERT`/`UPDATE`/`DELETE` | Tables and foreign labels | Tables, views, and foreign labels |
-| `TRUNCATE`   | —                          | Tables and foreign labels |                                   |
-| `INSTEAD OF` | `INSERT`/`UPDATE`/`DELETE` | Views                     | —                                 |
-| `TRUNCATE`   | —                          | —                         |                                   |
+| When         | Event                            | Row-level                 | Statement-level                   |
+| ------------ | -------------------------------- | ------------------------- | --------------------------------- |
+| `BEFORE`     | `CREATE/SET/REMOVE/DELETE/MERGE` | Tables and foreign labels | Labels, views, and foreign labels |
+| `TRUNCATE`   | —                                | Tables and foreign labels |                                   |
+| `AFTER`      | `CREATE/SET/REMOVE/DELETE/MERGE` | Tables and foreign labels | Tables, views, and foreign labels |
+| `TRUNCATE`   | —                                | Tables and foreign labels |                                   |
+| `INSTEAD OF` | `CREATE/SET/REMOVE/DELETE/MERGE` | Views                     | —                                 |
+| `TRUNCATE`   | —                                | —                         |                                   |
 
 Also, a trigger definition can specify a Boolean `WHEN` condition, which will be tested to see whether the trigger should be fired. In row-level triggers the `WHEN` condition can examine the old and/or new values of columns of the row. Statement-level triggers can also have `WHEN` conditions, although the feature is not so useful for them since the condition cannot refer to any values in the table.
 
@@ -77,23 +77,23 @@ Determines whether the function is called before, after, or instead of the event
 
 _`event`_
 
-One of `INSERT`, `UPDATE`, `DELETE`, or `TRUNCATE`; this specifies the event that will fire the trigger. Multiple events can be specified using `OR`, except when transition relations are requested.
+One of `CREATE`, `SET`, `REMOVE`,  `DELETE`, or `TRUNCATE`; this specifies the event that will fire the trigger. Multiple events can be specified using `OR`, except when transition relations are requested.
 
-For `UPDATE` events, it is possible to specify a list of columns using this syntax:
+For `SET` events, it is possible to specify a list of properties using this syntax:
 
 ```
-UPDATE OF column_name1 [, column_name2 ... ]
+SET OF column_name1 [, column_name2 ... ]
 ```
 
 The trigger will only fire if at least one of the listed columns is mentioned as a target of the `UPDATE` command or if one of the listed columns is a generated column that depends on a column that is the target of the `UPDATE`.
 
-`INSTEAD OF UPDATE` events do not allow a list of columns. A column list cannot be specified when requesting transition relations, either.
+`INSTEAD OF SET` events do not allow a list of properties. A property list cannot be specified when requesting transition relations, either.
 
-_`table_name`_
+_`label_name`_
 
 The name (optionally schema-qualified) of the table, view, or foreign table the trigger is for.
 
-_`referenced_table_name`_
+_`referenced_label_name`_
 
 The (possibly schema-qualified) name of another table referenced by the constraint. This option is used for foreign-key constraints and is not recommended for general use. This can only be specified for constraint triggers.
 
@@ -124,7 +124,7 @@ This specifies whether the trigger function should be fired once for every row a
 
 _`condition`_
 
-A Boolean expression that determines whether the trigger function will actually be executed. If `WHEN` is specified, the function will only be called if the _`condition`_ returns `true`. In `FOR EACH ROW` triggers, the `WHEN` condition can refer to columns of the old and/or new row values by writing `OLD.`_`column_name`_ or `NEW.`_`column_name`_ respectively. Of course, `INSERT` triggers cannot refer to `OLD` and `DELETE` triggers cannot refer to `NEW`.
+A Boolean expression that determines whether the trigger function will actually be executed. If `WHEN` is specified, the function will only be called if the _`condition`_ returns `true`. In `FOR EACH ROW` triggers, the `WHEN` condition can refer to columns of the old and/or new row values by writing `OLD.`_`property_name`_ or `NEW.`_`property_name`_ respectively. Of course, `CREATE` triggers cannot refer to `OLD` and `DELETE` triggers cannot refer to `NEW`.
 
 `INSTEAD OF` triggers do not support `WHEN` conditions.
 
@@ -136,7 +136,7 @@ _`function_name`_
 
 A user-supplied function that is declared as taking no arguments and returning type `trigger`, which is executed when the trigger fires.
 
-In the syntax of `CREATE TRIGGER`, the keywords `FUNCTION` and `PROCEDURE` are equivalent, but the referenced function must in any case be a function, not a procedure. The use of the keyword `PROCEDURE` here is historical and deprecated.
+In the syntax of `CREATE LABEL TRIGGER`, the keywords `FUNCTION` and `PROCEDURE` are equivalent, but the referenced function must in any case be a function, not a procedure. The use of the keyword `PROCEDURE` here is historical and deprecated.
 
 _`arguments`_
 
@@ -150,7 +150,7 @@ Use [`DROP LABEL TRIGGER`](https://www.postgresql.org/docs/16/sql-droptrigger.ht
 
 Creating a row-level trigger on a partitioned table will cause an identical “clone” trigger to be created on each of its existing partitions; and any partitions created or attached later will have an identical trigger, too. If there is a conflictingly-named trigger on a child partition already, an error occurs unless `CREATE OR REPLACE TRIGGER` is used, in which case that trigger is replaced with a clone trigger. When a partition is detached from its parent, its clone triggers are removed.
 
-A column-specific trigger (one defined using the `UPDATE OF`` `_`column_name`_ syntax) will fire when any of its columns are listed as targets in the `UPDATE` command's `SET` list. It is possible for a column's value to change even when the trigger is not fired, because changes made to the row's contents by `BEFORE UPDATE` triggers are not considered. Conversely, a command such as `UPDATE ... SET x = x ...` will fire a trigger on column `x`, even though the column's value did not change.
+A property-specific trigger (one defined using the `UPDATE OF property`_`_name`_ syntax) will fire when any of its columns are listed as targets in the `SET` command's list. It is possible for a column's value to change even when the trigger is not fired, because changes made to the row's contents by `BEFORE UPDATE` triggers are not considered. Conversely, a command such as `... SET x.i = y ...` will fire a trigger on property `x`, even though the property's value did not change.
 
 In a `BEFORE` trigger, the `WHEN` condition is evaluated just before the function is or would be executed, so using `WHEN` is not materially different from testing the same condition at the beginning of the trigger function. Note in particular that the `NEW` row seen by the condition is the current value, as possibly modified by earlier triggers. Also, a `BEFORE` trigger's `WHEN` condition is not allowed to examine the system columns of the `NEW` row (such as `ctid`), because those won't have been set yet.
 
@@ -177,7 +177,7 @@ There are a few built-in trigger functions that can be used to solve common prob
 Execute the function `check_account_update` whenever a row of the table `accounts` is about to be updated:
 
 ```
-CREATE TRIGGER check_update
+CREATE LABEL TRIGGER check_update
     BEFORE UPDATE ON accounts
     FOR EACH ROW
     EXECUTE FUNCTION check_account_update();
@@ -215,7 +215,7 @@ CREATE TRIGGER log_update
 Execute the function `view_insert_row` for each row to insert rows into the tables underlying a view:
 
 ```
-CREATE TRIGGER view_insert
+CREATE LABEL TRIGGER view_insert
     INSTEAD OF INSERT ON my_view
     FOR EACH ROW
     EXECUTE FUNCTION view_insert_row();
@@ -224,9 +224,9 @@ CREATE TRIGGER view_insert
 Execute the function `check_transfer_balances_to_zero` for each statement to confirm that the `transfer` rows offset to a net of zero:
 
 ```
-CREATE TRIGGER transfer_insert
-    AFTER INSERT ON transfer
-    REFERENCING NEW TABLE AS inserted
+CREATE LABEL TRIGGER transfer_insert
+    AFTER CREATE ON transfer
+    REFERENCING NEW LABEL AS inserted
     FOR EACH STATEMENT
     EXECUTE FUNCTION check_transfer_balances_to_zero();
 ```
