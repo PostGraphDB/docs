@@ -49,6 +49,8 @@
     * [FOREACH](manual/clauses/foreach.md)
     * [WHERE](manual/clauses/where.md)
     * [UNWIND](manual/clauses/unwind.md)
+  * [Patterns](manual/patterns/README.md)
+    * [Syntax and semantics](manual/patterns/syntax-and-semantics.md)
   * [Subqueries](manual/subqueries/README.md)
     * [WITH Subqueries](manual/subqueries/with-subqueries.md)
     * [Existence Check Subqueries](manual/subqueries/existence-check-subqueries.md)
