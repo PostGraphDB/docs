@@ -21,6 +21,7 @@
     * [DROP GRAPH](manual/ddl-commands/drop-graph.md)
     * [CREATE GRAPH](manual/ddl-commands/create-graph.md)
     * [CREATE LABEL](manual/ddl-commands/create-label.md)
+    * [CREATE LABEL TRIGGER](manual/ddl-commands/create-label-trigger.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
     * [Labels](manual/queries/labels.md)
