@@ -16,6 +16,7 @@
 ***
 
 * [📖 Manual](manual/README.md)
+  * [Query Engine Redesign](manual/query-engine-redesign.md)
   * [Label Redesign](manual/label-redesign.md)
   * [DDL Commands](manual/ddl-commands/README.md)
     * [DROP LABEL](manual/ddl-commands/drop-label.md)
