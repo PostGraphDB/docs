@@ -16,6 +16,7 @@
 ***
 
 * [📖 Manual](manual/README.md)
+  * [Label Redesign](manual/label-redesign.md)
   * [DDL Commands](manual/ddl-commands/README.md)
     * [DROP LABEL](manual/ddl-commands/drop-label.md)
     * [DROP LABEL TRIGGER](manual/ddl-commands/drop-label-trigger.md)
