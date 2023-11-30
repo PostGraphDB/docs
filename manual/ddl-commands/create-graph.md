@@ -8,7 +8,7 @@ description: CREATE GRAPH — define a new graph
 
 {% code overflow="wrap" %}
 ```sql
-CREATE GRAPH graph_name [ AUTHORIZATION role_specification ] [ graph_element [ ... ] ]
+CREATE [(DIRECTED | UNDIRECTED)] (GRAPH | HYPERGRAPH) graph_name [ AUTHORIZATION role_specification ] [ graph_element [ ... ] ]
 CREATE GRAPH AUTHORIZATION role_specification [ graph_element [ ... ] ]
 CREATE GRAPH IF NOT EXISTS graph_name [ AUTHORIZATION role_specification ]
 CREATE GRAPH IF NOT EXISTS AUTHORIZATION role_specification
