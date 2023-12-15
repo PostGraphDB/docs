@@ -12,7 +12,7 @@ CREATE [ OR REPLACE ] LABEL [ CONSTRAINT ] TRIGGER name { BEFORE | AFTER | INSTE
     ON absolute_label_name
     [ FROM referenced_label_name ]
     [ NOT DEFERRABLE | [ DEFERRABLE ] [ INITIALLY IMMEDIATE | INITIALLY DEFERRED ] ]
-    [ REFERENCING { { OLD | NEW } TABLE [ AS ] transition_relation_name } [ ... ] ]
+    [ REFERENCING { { OLD | NEW } LABEL [ AS ] transition_relation_name } [ ... ] ]
     [ FOR [ EACH ] { ROW | STATEMENT } ]
     [ WHEN ( condition ) ]
     EXECUTE { FUNCTION | PROCEDURE } function_name ( arguments )
