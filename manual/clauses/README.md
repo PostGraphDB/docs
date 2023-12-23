@@ -53,18 +53,18 @@ These comprise clauses that write the data to the database.
 
 These comprise clauses that both read data from and write data to the database.
 
-| Clause                             | Description                                                                                                               |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [`MERGE`](merge.md)                | Ensures that a pattern exists in the graph. Either the pattern already exists, or it needs to be created.                 |
-| `---` [`ON CREATE`](merge.md)      | Used in conjunction with `MERGE`, this write sub-clause specifies the actions to take if the pattern needs to be created. |
-| `---` [`ON MATCH`](merge.md)       | Used in conjunction with `MERGE`, this write sub-clause specifies the actions to take if the pattern already exists.      |
-| [`CALL …​ [YIELD …​` ](call.md)`]` | Invokes a procedure deployed in the database and return any results.                                                      |
+| Clause                           | Description                                                                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [`MERGE`](merge.md)              | Ensures that a pattern exists in the graph. Either the pattern already exists, or it needs to be created.                 |
+| `---` [`ON CREATE`](merge.md)    | Used in conjunction with `MERGE`, this write sub-clause specifies the actions to take if the pattern needs to be created. |
+| `---` [`ON MATCH`](merge.md)     | Used in conjunction with `MERGE`, this write sub-clause specifies the actions to take if the pattern already exists.      |
+| [`CALL …​ [YIELD …​` ](call/)`]` | Invokes a procedure deployed in the database and return any results.                                                      |
 
 ### Subquery clauses
 
-| Clause                   | Description                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| [`CALL { …​ }`](call.md) | Evaluates a subquery, typically used for post-union processing or aggregations. |
+| Clause                 | Description                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| [`CALL { …​ }`](call/) | Evaluates a subquery, typically used for post-union processing or aggregations. |
 
 ### Set operations
 
