@@ -32,8 +32,6 @@
     * [Labels](manual/queries/labels.md)
   * [Clauses](manual/clauses/README.md)
     * [MATCH](manual/clauses/match.md)
-    * [OPTIONAL MATCH](manual/clauses/optional-match.md)
-    * [MANDATORY MATCH](manual/clauses/mandatory-match.md)
     * [RETURN](manual/clauses/return.md)
     * [WITH](manual/clauses/with.md)
     * [CREATE](manual/clauses/create.md)
@@ -122,7 +120,8 @@
   * [Label Triggers](manual/label-triggers.md)
   * [Advanced Path Finding](manual/advanced-path-finding/README.md)
     * [Vector Path Finding](manual/advanced-path-finding/vector-path-finding.md)
-    * [Shortest Path](manual/advanced-path-finding/shortest-path.md)
+    * [Shortest Path](manual/advanced-path-finding/shortest-path/README.md)
+      * [NetworkX Shortest Path](manual/advanced-path-finding/shortest-path/networkx-shortest-path.md)
     * [PGRouting Integration](manual/advanced-path-finding/pgrouting-integration.md)
 
 ## Use Cases

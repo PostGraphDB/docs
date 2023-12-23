@@ -8,11 +8,11 @@ These comprise clauses that read data from the database.
 
 The flow of data within a Cypher query is an unordered sequence of maps with key-value pairs — a set of possible bindings between the variables in the query and values derived from the database. This set is refined and augmented by subsequent parts of the query.
 
-| Clause                                  | Description                                                                                              |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [`MATCH`](match.md)                     | Specify the patterns to search for in the database.                                                      |
-| [`OPTIONAL MATCH`](optional-match.md)   | Specify the patterns to search for in the database while using `nulls` for missing parts of the pattern. |
-| [`MANDATORY MATCH`](mandatory-match.md) |                                                                                                          |
+| Clause                                | Description                                                                                              |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [`MATCH`](match.md)                   | Specify the patterns to search for in the database.                                                      |
+| [`OPTIONAL MATCH`](broken-reference)  | Specify the patterns to search for in the database while using `nulls` for missing parts of the pattern. |
+| [`MANDATORY MATCH`](broken-reference) |                                                                                                          |
 
 ### Projecting clauses
 
