@@ -7,10 +7,10 @@ description: Describe one or more path traversals in a database
 ### Grammar <a href="#match-introduction" id="match-introduction"></a>
 
 ```plsql
-[ {MANDATORY | OPTIONAL} ] MATCH 
+[ {MANDATORY | OPTIONAL} ] MATCH (UNCONSTRAINED|DIFFERENT (VERTICES|NODES|EDGES|RELATIONSHIPS))
 [ ALL | DISTINCT [ ON ( expression [, ...] ) ] ]
 [SHORTEST (USING shortest_path_method) [WITH traversal_option AS config [, ...]]]
-{traversal_variable=}('('vertex_definition')'{edge_definition '('vertex_definition')'}{0,}
+([ ACYCLIC | SIMPLE | TRAIL[S] ] {traversal_variable=}('('vertex_definition')'{edge_definition '('vertex_definition')'}{0,}) [, ...]
 [ WHERE condition ]
 [ YIELDING {* | expression [AS output_name] [, ...]} ]
 [ GROUP BY [ ALL | DISTINCT ] grouping_element  [HAVING expresion [,...]] ]
@@ -33,8 +33,7 @@ and vertex_definition is defined as:
    
    
 and edge_body_definition is defined as:
-    {edge_name} { ':' label_name [...]} {'*' {('..' | {min_edges} .. {max_edges})}} {(WHERE conditions | property_constraint_map | parameter_name)}
-   
+    {edge_name} { ':' label_name [...]} {'*' [SHORTEST (USING shortest_path_method) [WITH traversal_option AS config [, ...]]] {('..' | {min_edges} .. {max_edges})}} {(WHERE conditions | property_constraint_map | parameter_name)}
    
 and grouping_element can be one of:
     ( )
