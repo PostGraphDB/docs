@@ -26,6 +26,7 @@
     * [CREATE GRAPH](manual/ddl-commands/create-graph.md)
     * [CREATE LABEL](manual/ddl-commands/create-label.md)
     * [CREATE LABEL TRIGGER](manual/ddl-commands/create-label-trigger.md)
+    * [CREATE LABEL INDEX](manual/ddl-commands/create-label-index.md)
     * [TRUNCATE](manual/ddl-commands/truncate.md)
   * [Queries](manual/queries/README.md)
     * [Core Concepts](manual/queries/core-concepts.md)
